@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductInvoicingSystem.Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductInvoicingSystem.Data", "ProductInvoicingSystem.Data\ProductInvoicingSystem.Data.csproj", "{763CEC32-5655-4E7C-814E-27643530C7B9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductInvoicingSystem.Application", "ProductInvoicingSystem.Application\ProductInvoicingSystem.Application.csproj", "{5BE7EF6D-945D-4CA5-B2FE-1FBB7EC0A305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductInvoicingSystem.WindowsDesktopApplication", "ProductInvoicingSystem.Application\ProductInvoicingSystem.WindowsDesktopApplication.csproj", "{5BE7EF6D-945D-4CA5-B2FE-1FBB7EC0A305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductInvoicingSystem.Service", "ProductInvoicingSystem.Service\ProductInvoicingSystem.Service.csproj", "{DA3FCDE1-A4F4-44DD-8AE6-115966035CFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductInvoicingSystem.Service", "ProductInvoicingSystem.Service\ProductInvoicingSystem.Service.csproj", "{DA3FCDE1-A4F4-44DD-8AE6-115966035CFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProductInvoicingSystem.Data.DataProvider;
 using ProductInvoicingSystem.Service.Catalog;
+using ProductInvoicingSystem.WindowsDesktopApplication;
 
 namespace ProductInvoicingSystem.App
 {
@@ -12,22 +13,6 @@ namespace ProductInvoicingSystem.App
         ///  The main entry point for the application.
         /// </summary>
         /// 
-        //static void ExemplifyServiceLifetime(IServiceProvider hostProvider, string lifetime)
-        //{
-        //    using IServiceScope serviceScope = hostProvider.CreateScope();
-        //    IServiceProvider provider = serviceScope.ServiceProvider;
-        //    ServiceLifetimeReporter logger = provider.GetRequiredService<ServiceLifetimeReporter>();
-        //    logger.ReportServiceLifetimeDetails(
-        //        $"{lifetime}: Call 1 to provider.GetRequiredService<ServiceLifetimeLogger>()");
-
-        //    Console.WriteLine("...");
-
-        //    logger = provider.GetRequiredService<ServiceLifetimeReporter>();
-        //    logger.ReportServiceLifetimeDetails(
-        //        $"{lifetime}: Call 2 to provider.GetRequiredService<ServiceLifetimeLogger>()");
-
-        //    Console.WriteLine();
-        //}
         [STAThread]
         public static void Main(string[]args)
         {
@@ -36,14 +21,15 @@ namespace ProductInvoicingSystem.App
                             .ConfigureServices(services =>
                             {
                                 services.AddTransient<LoginWindow>();
+                                services.AddTransient<MainWindow>();
+
                                 services.AddScoped<IProductService, ProductService>();
                             })
                             .Build();
 
             var serviceProvider = host.Services;
             ApplicationConfiguration.Initialize();
-            Application.Run(serviceProvider.GetRequiredService<LoginWindow>()); 
-            //host.Run();
+            Application.Run(serviceProvider.GetRequiredService<LoginWindow>());
 
         }
     }

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\ProductInvoicingSystem.Service\ProductInvoicingSystem.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Presentation\" />
+  </ItemGroup>
+
 </Project>
