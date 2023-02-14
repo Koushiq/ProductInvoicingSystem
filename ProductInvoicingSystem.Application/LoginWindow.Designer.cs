@@ -1,4 +1,6 @@
-﻿namespace ProductInvoicingSystem.App
+﻿using ProductInvoicingSystem.Service.Catalog;
+
+namespace ProductInvoicingSystem.App
 {
     partial class LoginWindow
     {
@@ -6,7 +8,6 @@
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
         /// <summary>
         ///  Clean up any resources being used.
         /// </summary>

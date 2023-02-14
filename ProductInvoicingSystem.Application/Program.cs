@@ -1,6 +1,8 @@
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProductInvoicingSystem.Data.DataProvider;
+using ProductInvoicingSystem.Service.Catalog;
 
 namespace ProductInvoicingSystem.App
 {
@@ -9,24 +11,39 @@ namespace ProductInvoicingSystem.App
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+        //static void ExemplifyServiceLifetime(IServiceProvider hostProvider, string lifetime)
+        //{
+        //    using IServiceScope serviceScope = hostProvider.CreateScope();
+        //    IServiceProvider provider = serviceScope.ServiceProvider;
+        //    ServiceLifetimeReporter logger = provider.GetRequiredService<ServiceLifetimeReporter>();
+        //    logger.ReportServiceLifetimeDetails(
+        //        $"{lifetime}: Call 1 to provider.GetRequiredService<ServiceLifetimeLogger>()");
+
+        //    Console.WriteLine("...");
+
+        //    logger = provider.GetRequiredService<ServiceLifetimeReporter>();
+        //    logger.ReportServiceLifetimeDetails(
+        //        $"{lifetime}: Call 2 to provider.GetRequiredService<ServiceLifetimeLogger>()");
+
+        //    Console.WriteLine();
+        //}
         [STAThread]
-        public static void Main()
+        public static void Main(string[]args)
         {
-            var serviceProvider = new ServiceCollection()
-                .AddLogging()
-                .BuildServiceProvider();
 
-            //serviceProvider.AddDbContext<ProductInvoicingSystemDbContext>(ServiceLifetime.Transient);
-                                 //.AddLogging()
-                                 //.AddSingleton<IFooService, FooService>()
-                                 //.AddSingleton<IBarService, BarService>()
-                                 //.BuildServiceProvider();
+            var host = Host.CreateDefaultBuilder(args)
+                            .ConfigureServices(services =>
+                            {
+                                services.AddTransient<LoginWindow>();
+                                services.AddScoped<IProductService, ProductService>();
+                            })
+                            .Build();
 
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            var serviceProvider = host.Services;
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginWindow());
-
+            Application.Run(serviceProvider.GetRequiredService<LoginWindow>()); 
+            //host.Run();
 
         }
     }
